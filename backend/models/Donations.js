@@ -1,0 +1,20 @@
+import mongoose from "mongoose";
+
+const donationSchema=mongoose.Schema({
+    "name":{
+        type:String,
+    },
+    "pan_no":{
+        type:String,
+        required:true
+    },
+    "transation_id":{
+        type:String,
+        required:true,
+        unique:true
+    }
+})
+
+const Donations=mongoose.model("Donations",donationSchema);
+
+export default Donations;
