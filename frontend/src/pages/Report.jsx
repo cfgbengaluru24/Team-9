@@ -3,7 +3,7 @@ import './ReportForm.css'; // Import the custom CSS file
 
 const ReportForm = () => {
     const [formData, setFormData] = useState({
-        userEmail: '',
+        email: '',
         reportText: '',
         createdAt: '',
         diagnostics: '',
@@ -27,7 +27,7 @@ const ReportForm = () => {
             const response = await fetch('http://localhost:3000/api/v1/reports/putReport', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({...formData, userId: localStorage.getItem('id')})
+                body: JSON.stringify(formData)
             });
 
             const data = await response.json();
@@ -58,8 +58,8 @@ const ReportForm = () => {
                     <label htmlFor="userId" className="form-label">User Email</label>
                     <input
                         type="email"
-                        id="userEmail"
-                        name="userEmail"
+                        id="email"
+                        name="email"
                         value={formData.userId}
                         onChange={handleChange}
                         className="form-input"

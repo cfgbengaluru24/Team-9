@@ -11,9 +11,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { Stepper, Step, StepLabel, Select, MenuItem } from '@mui/material';
 import { useState } from 'react';
+import createTheme from "@mui/material/styles/createTheme";
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -31,6 +33,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUpSide() {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const steps = ['Personal Info', 'Role Selection', 'Additional Info'];
 
@@ -115,6 +118,7 @@ export default function SignUpSide() {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        navigate('/')
         return response.json(); // Convert response to JSON
       })
       .then(data => {

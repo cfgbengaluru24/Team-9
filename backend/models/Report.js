@@ -1,14 +1,6 @@
 import mongoose from 'mongoose';
 
 const ReportSchema=new mongoose.Schema({
-    reportId:{
-        type:String,
-        required:true
-    },
-    userId:{
-        type:String,
-        required:true
-    },
     reportText:{
         type:String,
         required:true
@@ -29,7 +21,6 @@ const ReportSchema=new mongoose.Schema({
         type:Date,
         required:true
     }
- 
 })
 
 const Report = mongoose.model("Report",ReportSchema)

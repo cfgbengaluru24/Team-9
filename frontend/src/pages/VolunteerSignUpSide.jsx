@@ -11,9 +11,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { Stepper, Step, StepLabel, Select, MenuItem } from '@mui/material';
 import { useState } from 'react';
+import createTheme from "@mui/material/styles/createTheme";
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -32,6 +34,7 @@ const defaultTheme = createTheme();
 
 export default function VolunteerSignUpSide() {
   const [activeStep, setActiveStep] = useState(0);
+  const navigate = useNavigate();
   const steps = ['Personal Info', 'Role Selection', 'Additional Info'];
 
   const isValidEmail = (email) => {
@@ -115,6 +118,7 @@ export default function VolunteerSignUpSide() {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+      navigate('/vol-signin')
         return response.json(); // Convert response to JSON
       })
       .then(data => {

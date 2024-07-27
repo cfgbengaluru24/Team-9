@@ -143,7 +143,7 @@ const Volunteer = () => {
       <Button
         variant="contained"
         color="primary"
-        onClick={()=>{navigate('/signup')}}
+        onClick={()=>{navigate('/vol-signup')}}
       >
         Sign Up
       </Button>

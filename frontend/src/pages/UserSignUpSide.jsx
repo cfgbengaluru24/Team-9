@@ -11,9 +11,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { Stepper, Step, StepLabel, Select, MenuItem } from '@mui/material';
 import { useState } from 'react';
+import createTheme from "@mui/material/styles/createTheme";
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -31,6 +33,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function UserSignUpSide() {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const steps = ['Personal Info 1', 'Personal Info 2', 'Personal Info 3'];
 
@@ -114,7 +117,8 @@ export default function UserSignUpSide() {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json(); // Convert response to JSON
+        navigate('/user-signin')
+        return response.json(); // nvert response to JSON
       })
       .then(data => {
         console.log('Success:', data); // Handle the JSON data from the response

@@ -9,10 +9,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { Stepper, Step, StepLabel } from '@mui/material';
 import { useState } from 'react';
 import image from '../assets/user.png'; // Adjust the path if necessary
+import createTheme from "@mui/material/styles/createTheme";
 
 function Copyright(props) {
   return (

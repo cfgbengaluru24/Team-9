@@ -1,19 +1,16 @@
 import Report from '../models/Report.js';
+import User from '../models/User.js';
+import mongoose from 'mongoose';
 
 class ReportController{
     putReport = async (req, res) => {
-        const { userId, reportText, createdAt, diagnostics, prescription } = req.body;
-        
-        if (!userId || !reportText || !createdAt) {
-            return res.status(400).json({ success: false, message: 'Please provide all required fields' });
-        }
+        const { email, reportText, createdAt, diagnostics, prescription } = req.body;
         
         try {
-            const user = await User.findById(userId);
-            if (!user) {
-                return res.status(404).json({ success: false, message: 'User not found' });
-            }
+            // const neww = await User.find().toArray();
 
+            // console.log({neww})
+            const userId = await User.findOne(email)._id;
             const nextVisit = new Date(createdAt);
             nextVisit.setDate(nextVisit.getDate() + 30);
 
