@@ -39,6 +39,7 @@ class VolunteerController{
             if (!bcrypt.compareSync(password,volunteer.password)) {
                 return res.status(401).json({ message: "Invalid email or password" });
             } else {
+                volunteer.updateOne({ points : volunteer.points + 5});
                 res.json({ message: "Logged in successfully", volunteer });
             }     
         } catch (error) {
@@ -60,6 +61,13 @@ class VolunteerController{
             res.status(400).json({ error: error.message });
         }
     }
+    logout = async (req, res) => {
+        try {
+            res.json({ message: "Logged out successfully" });
+        } catch (error) {
+            res.status(400).json({ error: error.message });
+        }
+    } 
 }
 
 export default new VolunteerController()

@@ -34,6 +34,10 @@ const UserSchema=new mongoose.Schema({
     },
     mentor:{
         type:String
+    },
+    points:{
+        type:Number,
+        default:0
     }
 })
 

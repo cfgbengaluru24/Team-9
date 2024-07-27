@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import User from "./User.js";
 
 const VolunteerSchema=new mongoose.Schema({
     name :{
@@ -30,6 +29,10 @@ const VolunteerSchema=new mongoose.Schema({
     experience:{
         type:String,
         required:true
+    },
+    points:{
+        type:Number,
+        default:0
     }
 })
 
