@@ -68,6 +68,7 @@ function Main() {
         <Route path="/vol-signin" element={<VolunteerSignInSide logged={logged} setLogged={setLogged}/>} />
         <Route path="/vol-signup" element={<VolunteerSignUpSide logged={logged} setLogged={setLogged}/>} />
         <Route path="/user-signin" element={<UserSignInSide logged={logged} setLogged={setLogged}/>} />
+        <Route path="/dental" element={<DentalPrediction />} />
         <Route path="/user-signup" element={<UserSignUpSide logged={logged} setLogged={setLogged}/>} />
         <Route path="/doc-signin" element={<DocSignInSide logged={logged} setLogged={setLogged}/>} />
         <Route path="/doc-signup" element={<DocSignUpSide logged={logged} setLogged={setLogged}/>} />
