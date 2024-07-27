@@ -9,8 +9,8 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Stepper, Step, StepLabel, Select, MenuItem } from '@mui/material';
 import { useState } from 'react';
@@ -30,7 +30,7 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignUpSide() {
+export default function VolunteerSignUpSide() {
   const [activeStep, setActiveStep] = useState(0);
   const steps = ['Personal Info', 'Role Selection', 'Additional Info'];
 
@@ -398,7 +398,7 @@ export default function SignUpSide() {
               </Button> */}
               <Grid container>
                 <Grid item xs>
-                  <Link href="signin" variant="body2" sx={{ fontSize: 9 }}>
+                  <Link href="/vol-signin" variant="body2" sx={{ fontSize: 9 }}>
                     Already have an account? Sign In
                   </Link>
                 </Grid>

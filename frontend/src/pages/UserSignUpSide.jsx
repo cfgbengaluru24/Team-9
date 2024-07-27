@@ -9,8 +9,8 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Stepper, Step, StepLabel, Select, MenuItem } from '@mui/material';
 import { useState } from 'react';
@@ -30,9 +30,9 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignUpSide() {
+export default function UserSignUpSide() {
   const [activeStep, setActiveStep] = useState(0);
-  const steps = ['Personal Info', 'Role Selection', 'Additional Info'];
+  const steps = ['Personal Info 1', 'Personal Info 2', 'Personal Info 3'];
 
   const isValidEmail = (email) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43,12 +43,11 @@ export default function SignUpSide() {
     name: '',
     email: '',
     contactNo: '',
-    address: '',
-    role: 'Doctor',
-    // cv: null,
-    experience: 0,
-    qualification: '',
+    location: '',
+    parentName: '',
     password: '',
+    dob:'',
+    schoolName: ''
   });
   const [previewUrl, setPreviewUrl] = useState(null);
 
@@ -75,9 +74,9 @@ export default function SignUpSide() {
       case 0:
         return formData.name && isValidEmail(formData.email) && formData.contactNo;
       case 1:
-        return formData.role && formData.qualification;
+        return formData.schoolName && formData.location;
       case 2:
-        return formData.address; //&& formData.cv;
+        return formData.parentName && formData.dob;
       default:
         return false;
     }
@@ -104,7 +103,7 @@ export default function SignUpSide() {
     // }
     if (validateStep(activeStep)) {
       console.log( formData);
-      fetch('http://localhost:3000/api/v1/volunter/signup', {
+      fetch('http://localhost:3000/api/v1/user/signup', {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json' 
@@ -199,7 +198,7 @@ export default function SignUpSide() {
               <LockOutlinedIcon sx={{ fontSize: 20 }} />
             </Avatar>
             <Typography component="h1" variant="h6">
-              Volunteer Sign Up
+              User Sign Up
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <Box sx={{ width: '100%' }}>
@@ -262,56 +261,51 @@ export default function SignUpSide() {
               )}
               {activeStep === 1 && (
                 <>
-                <div className="form-group">
-                  <label htmlFor="role">Role*</label>
-                  <Select
-                    id="role"
-                    name="role"
-                    value={formData.role}
-                    onChange={handleChange}
-                    fullWidth
-                    margin="normal"
-                    required
-                  >
-                    <MenuItem value="Doctor">Doctor</MenuItem>
-                    <MenuItem value="Nurse">Nurse</MenuItem>
-                    <MenuItem value="Nutritionist">Nutritionist</MenuItem>
-                  </Select>
-                </div>
                 <TextField
-                    label="Experience"
-                    name="experience"
-                    value={formData.experience}
+                    label="School Name"
+                    name="schoolName"
+                    value={formData.schoolName}
                     onChange={handleChange}
                     fullWidth
                     margin="normal"
-                    inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                     required
                   />
+                  {/* <label htmlFor="location">Location*</label> */}
                   <TextField
-                    label="Qualification"
-                    name="qualification"
-                    value={formData.qualification}
+                    label="Location"
+                    name="location"
+                    value={formData.location}
                     onChange={handleChange}
                     fullWidth
                     margin="normal"
                     required
                   />
+                  
                 </>
               )}
               {activeStep === 2 && (
                 <>
                   <TextField
-                    label="Address"
-                    name="address"
-                    value={formData.address}
+                    label="Parent Name"
+                    name="parentName"
+                    value={formData.parentName}
                     onChange={handleChange}
                     fullWidth
                     margin="normal"
-                    multiline
-                    rows={4}
                     required
                   />
+                  <div className="form-group">
+                    <label htmlFor="dob" className="form-label">DOB</label>
+                    <input
+                        type="date"
+                        id="dob"
+                        name="dob"
+                        value={formData.dob}
+                        onChange={handleChange}
+                        className="form-input"
+                        required
+                    />
+                </div>
                   {/* <div className="form-group">
                     <label htmlFor="file">Upload CV*</label>
                     <input
@@ -323,11 +317,7 @@ export default function SignUpSide() {
                       required
                     />
                   </div> */}
-                  {previewUrl && (
-                    <div className="file-preview">
-                      <iframe src={previewUrl} width="100%" height="500px" title="CV Preview"></iframe>
-                    </div>
-                  )}
+                  
                 </>
               )}
               <Box sx={{ marginTop: '16px' }}>
@@ -398,7 +388,7 @@ export default function SignUpSide() {
               </Button> */}
               <Grid container>
                 <Grid item xs>
-                  <Link href="signin" variant="body2" sx={{ fontSize: 9 }}>
+                  <Link href="/user-signin" variant="body2" sx={{ fontSize: 9 }}>
                     Already have an account? Sign In
                   </Link>
                 </Grid>

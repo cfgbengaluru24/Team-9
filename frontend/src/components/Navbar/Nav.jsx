@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Nav.css";
 import logo from '../../assets/teeth.png';
 import { HamburgetMenuClose, HamburgetMenuOpen } from "./Icons";
+// import gmap_src from 'C:/Users/olirv/Documents/React Apps/Team-9/backend/.env'
 
 function NavBar() {
   const [click, setClick] = useState(false);
+  const navigate = useNavigate();
+  const [dropdownOpen, setDropdownOpen] =useState(false);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
   const handleClick = () => setClick(!click);
   return (
@@ -63,6 +69,27 @@ function NavBar() {
                 Contact Us
               </NavLink>
             </li>
+            <li className="nav-item">
+      <div style={{'color': "white"}}
+        onClick={toggleDropdown}
+      >
+        Login
+      </div>
+      {dropdownOpen && (
+        <div style={{'color': "white", 'position': 'absolute', 'backgroundColor': 'black'}}>
+          <div onClick={() => {setDropdownOpen(false);navigate('/doc-signin')}}>
+            Doctor
+          </div>
+          <div onClick={() => {setDropdownOpen(false);navigate('/user-signin')}}>
+            User
+          </div>
+          <div onClick={() => {setDropdownOpen(false);navigate('/vol-signin')}}>
+          Volunteer
+          </div>
+        </div>
+      )}
+    </li>
+            
           </ul>
           <div className="nav-icon" onClick={handleClick}>
             {/* <i className={click ? "fas fa-times" : "fas fa-bars"}></i> */}

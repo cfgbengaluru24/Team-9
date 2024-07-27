@@ -6,9 +6,15 @@ import NotFound from './pages/NotFound';
 import Volunteer from './pages/Volunteer';
 import Footer from './pages/Footer';
 import logo from './assets/logo.png';
-import SignInSide from './pages/SignInSide';
-import SignUpSide from './pages/SignUpSide';
+import VolunteerSignInSide from './pages/VolunteerSignInSide';
+import VolunteerSignUpSide from './pages/VolunteerSignUpSide';
+import UserSignInSide from './pages/UserSignInSide';
+import UserSignUpSide from './pages/UserSignUpSide';
+import DocSignInSide from './pages/DocSignInSide';
+import DocSignUpSide from './pages/DocSignUpSide';
 import VolunteerPrograms from './pages/VolunteerPrograms';
+import Report from './pages/Report';
+
 
 function App() {
   return (
@@ -38,7 +44,7 @@ function Main() {
   return (
     <>
       
-      <nav style={{ position: 'sticky', top: '0', zIndex: '100' }}>
+       {/* <nav style={{ position: 'sticky', top: '0', zIndex: '100' }}>
         <div className="logo">
           <img src={logo} alt="Logo" />
         </div>
@@ -51,7 +57,7 @@ function Main() {
           <li><Link to="/volunteer-programs">Upcoming Programs</Link></li>
           <li><Link to="/signin">Login</Link></li>
         </ul>)}
-      </nav>
+      </nav>  */}
     
       <Routes>
         <Route path="/" element={<Home />} />
@@ -59,12 +65,18 @@ function Main() {
         <Route path="/projects" element={<NotFound />} />
         <Route path="/testimonials" element={<NotFound />} />
         <Route path="/volunteers" element={<Volunteer />} />
-        <Route path="/signin" element={<SignInSide logged={logged} setLogged={setLogged}/>} />
-        <Route path="/signup" element={<SignUpSide logged={logged} setLogged={setLogged}/>} />
+        <Route path="/vol-signin" element={<VolunteerSignInSide logged={logged} setLogged={setLogged}/>} />
+        <Route path="/vol-signup" element={<VolunteerSignUpSide logged={logged} setLogged={setLogged}/>} />
+        <Route path="/user-signin" element={<UserSignInSide logged={logged} setLogged={setLogged}/>} />
+        <Route path="/user-signup" element={<UserSignUpSide logged={logged} setLogged={setLogged}/>} />
+        <Route path="/doc-signin" element={<DocSignInSide logged={logged} setLogged={setLogged}/>} />
+        <Route path="/doc-signup" element={<DocSignUpSide logged={logged} setLogged={setLogged}/>} />
         <Route path="/volunteer-programs" element={<VolunteerPrograms logged={logged} setLogged={setLogged}/>} />
+        <Route path="/reports" element={<Report logged={logged} setLogged={setLogged}/>} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {showNavAndFooter && <Footer />}
+
     </>
   );
 }
