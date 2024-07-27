@@ -6,10 +6,11 @@ import Camps from '../models/Camps.js';
 class AdminController{
     signup = async (req,res) => {
         try {
+
             if(!req.body){
                 return res.status(400).json({message:"Data to update can not be empty"})
             }
-            if(req.params !=  process.env.Admin) {
+            if(req.get('Authorization') !=  process.env.Admin) {
               return res.status(403).json({ message: "Unauthorized access" });
             }
             const { name, email, password} = req.body;
@@ -31,7 +32,7 @@ class AdminController{
         try{
             const {email, password } = req.body;
             const admin = await Admin.findOne({ email });
-            if(req.params !=  process.env.Admin) {
+            if(req.get('Authorization') !=  process.env.Admin) {
                 return res.status(403).json({ message: "Unauthorized access" });
               }
             if (admin.password != password) {

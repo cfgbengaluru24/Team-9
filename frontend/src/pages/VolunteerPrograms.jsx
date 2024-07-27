@@ -132,6 +132,24 @@ const VolunteerPrograms = () => {
     const [iframeVisible, setIframeVisible] = useState([]);
   
     const handleRegister = (campName) => {
+      fetch('http://localhost:3000/api/v1/campus/reduceCount', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json(); // Convert response to JSON
+        })
+        .then(data => {
+          console.log('Success:', data); // Handle the JSON data from the response
+        })
+        .catch(error => {
+          console.error('Error:', error); // Handle any errors
+        });
       alert(`You have registered for ${campName}`);
       // Here, you can add further registration logic
     };

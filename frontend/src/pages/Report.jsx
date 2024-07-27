@@ -22,11 +22,12 @@ const ReportForm = () => {
         setError('');
         setSuccess('');
 
+        console.log(formData)
         try {
-            const response = await fetch('/api/reports', {
-                method: 'PUT',
+            const response = await fetch('http://localhost:3000/api/v1/reports/putReport', {
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({...formData, userId: localStorage.getItem('id')})
             });
 
             const data = await response.json();
