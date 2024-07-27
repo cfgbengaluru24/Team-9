@@ -1,6 +1,7 @@
 import Admin from '../models/Admin.js';
 import Volunteer from '../models/Volunteer.js';
 import User from '../models/User.js';
+import Camps from '../models/Camps.js';
 
 class AdminController{
     signup = async (req,res) => {
@@ -92,6 +93,23 @@ class AdminController{
             res.json({ message: "User updated successfully" + User});
         } catch (error) {
             res.status(400).json({ error: error.message });
+        }
+    }
+
+    postPrograms=async (req,res)=>{
+        try{
+            const {name,location,volunteer_count,description}=req.body;
+            const newProgram=new Camps({
+                name,
+                location,
+                volunteer_count,
+                description
+            })
+            await newProgram.save();
+            res.status(201).json({"message":"Added Progam Sucessully"})
+        }catch(e){
+            console.log(e.message);
+            res.status(400).json({"message":e.message})
         }
     }
 
