@@ -28,13 +28,36 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignInSide() {
+export default function SignInSide({ logged, setLogged }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
+    });
+    fetch('http://localhost:3000/api/v1/volunter/signin', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify({
+        email: data.get('email'),
+        password: data.get('password'),
+      }) 
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Convert response to JSON
+    })
+    .then(data => {
+      console.log('Success:', data); // Handle the JSON data from the response
+      setLogged(true);
+    })
+    .catch(error => {
+      console.error('Error:', error); // Handle any errors
     });
   };
 
@@ -70,7 +93,7 @@ export default function SignInSide() {
               <LockOutlinedIcon sx={{ fontSize: 20 }} />
             </Avatar>
             <Typography component="h1" variant="h6">
-              Sign in
+              Volunteer Sign in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -95,11 +118,11 @@ export default function SignInSide() {
                 autoComplete="current-password"
                 sx={{ fontSize: 11 }}
               />
-              <FormControlLabel
+              {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" sx={{ fontSize: 9 }} />}
                 label="Remember me"
                 sx={{ fontSize: 11 }}
-              />
+              /> */}
               <Button
                 type="submit"
                 fullWidth

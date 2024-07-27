@@ -1,14 +1,11 @@
 import React from 'react';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Card from '../components/Cards/Cards.jsx'
-import './Home.css'
+import Card from '../components/Cards/Cards.jsx';
+import './Home.css';
 import Aboutus from '../assets/AboutUs.png';
-const backgroundImages = [
-  'url(../../assets/home.jpg)',
-  'url(../../assets/home.jpg)',
-  'url(../../assets/home.jpg)'
-];
+import Nav from '../components/Navbar/Nav.jsx';
+import volunteer from '../assets/18827.jpg';
+import children from '../assets/6642817.jpg';
+
 const Home = () => {
   const cards = [
     {
@@ -32,8 +29,20 @@ const Home = () => {
       details: 'A brief description of Product 2, highlighting key features and benefits.',
       buttonText: 'Learn More'
     }
-    // Add more card data as needed
   ];
+
+  const card2 = [
+    {
+      image: '',
+      details: '',
+      buttonText: 'Volunteer'
+    },
+    {
+      image: '',
+      details: '',
+      buttonText: 'C'
+    }
+  ]
 
   const settings = {
     dots: true,
@@ -43,51 +52,40 @@ const Home = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    arrows: false, // Hide arrows if you only want dots
-};
+    arrows: false,
+  };
+
   return (
-    <div className='home'>
-      <div className="header">
-      <div className="header-contents">
-        <h2>Project Iron And Girl Child </h2>
-        <p>Join us</p>
-        <button >JOin us</button>
-      </div>
-      </div>
-      <div className='c'>
-        <div className='container-ab'>
-            <div className='image'>
-                <img src={Aboutus}></img>
-            </div>
-            <div className='info'>
-                <h2>About Us</h2>
-                <p>At Rohini Foundation, we believe every child deserves a healthy smile and a bright start in life. Founded by Dr. Sampath Reddy and his dedicated team, our mission is to make oral care accessible to all, especially underprivileged children in Telangana.
-
-Our team includes three pediatric dentists, three dental surgeons, and a compassionate gynecologist, all working towards a future free from cavities.
-
-ROHINI has been at the forefront of healthcare, organizing numerous health development programs and impacting countless lives for the past three years. We've screened over 75,000 children and treated more than 5,000 through our health camps.
-
-Understanding the challenges in remote areas, we've introduced Mobile Clinics, bringing essential dental care directly to towns and rural communities. This eco-friendly initiative ensures that no child is left behind in receiving dental care.
-
-We are proud to be one of the few foundations in Telangana granted both 12A and 80G certificates. These certifications reflect our dedication and the positive impact of our initiatives. With the collective efforts of our team, partners, and supporters, we remain committed to expanding our reach and making a lasting difference in the lives of children throughout Telangana.</p>
-            </div>
+    <>
+      <Nav />
+      <div className='home'>
+        <div className="header text-center py-10">
+          <h2 className='text-3xl font-bold'>We are <span className='text-primary'>Rohini</span></h2>
+          <div className="center-container py-8 flex-wrap">
+          <div className="card-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <img className='ig1' src={volunteer} /> 
+          </div>
+          <div className="card-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <img className='ig2' src={children} /> 
+          </div>
         </div>
-    </div>
-      <div className="center-container">
-      <div className="card-container">
-      {cards.map((card, index) => (
-        <Card
-        key={index}
-        title={card.title}
-        subtitle={card.subtitle}
-        image={card.image}
-        details={card.details}
-        buttonText={card.buttonText}
-      />
-      ))}
-    </div>
-    </div>
-    </div>
+        </div>
+        <div className="center-container py-8">
+          <div className="card-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cards.map((card, index) => (
+              <Card
+                key={index}
+                title={card.title}
+                subtitle={card.subtitle}
+                image={card.image}
+                details={card.details}
+                buttonText={card.buttonText}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
