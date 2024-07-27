@@ -40,15 +40,6 @@ def dentalPredictor(img):
         result = classes[predicted.item()]
     return result
 
-def dentalPredictorapi(img):
-    if img.mode != 'RGB':
-        img = img.convert('RGB')
-    CLIENT = InferenceHTTPClient(
-        api_url="https://detect.roboflow.com",
-        api_key=""
-    )
-    result = CLIENT.infer(img, model_id="kaggle-dental-caries/1")
-    print(result)
 
 @app.route('/', methods=["GET"])
 def home():
