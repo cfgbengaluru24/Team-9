@@ -37,6 +37,21 @@ function Main() {
 
   return (
     <>
+      
+       <nav style={{ position: 'sticky', top: '0', zIndex: '100' }}>
+        <div className="logo">
+          <img src={logo} alt="Logo" />
+        </div>
+        {showNavAndFooter && (<ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/projects">Projects</Link></li>
+          <li><Link to="/testimonials">Testimonials</Link></li>
+          <li><Link to="/volunteers">Volunteers</Link></li>
+          <li><Link to="/volunteer-programs">Upcoming Programs</Link></li>
+          <li><Link to="/signin">Login</Link></li>
+        </ul>)}
+      </nav> 
     
       <Routes>
         <Route path="/" element={<Home />} />
