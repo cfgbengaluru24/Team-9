@@ -12,6 +12,8 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Stepper, Step, StepLabel, Select, MenuItem } from '@mui/material';
+import { useState } from 'react';
 
 function Copyright(props) {
   return (
@@ -29,15 +31,141 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUpSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      confirmPassword: data.get('confirmPassword'),
-    });
+  const [activeStep, setActiveStep] = useState(0);
+  const steps = ['Personal Info', 'Role Selection', 'Additional Info'];
+
+  const isValidEmail = (email) => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
   };
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    contactNo: '',
+    address: '',
+    role: 'Doctor',
+    // cv: null,
+    experience: 0,
+    qualification: '',
+    password: '',
+  });
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    if (name === 'cv') return;
+    if (type === 'file') {
+      const file = files[0];
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: file,
+      }));
+      setPreviewUrl(URL.createObjectURL(file));
+    } else {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    }
+  };
+
+  const validateStep = (step) => {
+    switch (step) {
+      case 0:
+        return formData.name && isValidEmail(formData.email) && formData.contactNo;
+      case 1:
+        return formData.role && formData.qualification;
+      case 2:
+        return formData.address; //&& formData.cv;
+      default:
+        return false;
+    }
+  };
+
+  const handleNext = () => {
+    if (validateStep(activeStep)) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    } else {
+      alert('Please fill out all required fields correctly.');
+    }
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // if (data.get('password') !== data.get('confirmPassword'))
+    // {
+    //   alert('Passwords should match.')
+    //   return;
+    // }
+    if (validateStep(activeStep)) {
+      console.log( formData);
+      fetch('http://localhost:3000/api/v1/volunter/signup', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify(formData) 
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Convert response to JSON
+      })
+      .then(data => {
+        console.log('Success:', data); // Handle the JSON data from the response
+      })
+      .catch(error => {
+        console.error('Error:', error); // Handle any errors
+      });
+      
+    } else {
+      alert('Please fill out all required fields correctly.');
+    }
+  };
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //     confirmPassword: data.get('confirmPassword'),
+  //   });
+  //   if (data.get('password') !== data.get('confirmPassword'))
+  //   {
+  //     alert('Passwords should match.')
+  //     return;
+  //   }
+  //   fetch('http://localhost:3000/api/v1/volunter/signup', {
+  //     method: 'POST', 
+  //     headers: {
+  //       'Content-Type': 'application/json' 
+  //     },
+  //     body: JSON.stringify({
+  //       email: data.get('email'),
+  //       password: data.get('password'),
+  //     }) 
+  //   })
+  //   .then(response => {
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  //     return response.json(); // Convert response to JSON
+  //   })
+  //   .then(data => {
+  //     console.log('Success:', data); // Handle the JSON data from the response
+  //     setLogged(true);
+  //   })
+  //   .catch(error => {
+  //     console.error('Error:', error); // Handle any errors
+  //   });
+  // };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -71,10 +199,157 @@ export default function SignUpSide() {
               <LockOutlinedIcon sx={{ fontSize: 20 }} />
             </Avatar>
             <Typography component="h1" variant="h6">
-              Sign Up
+              Volunteer Sign Up
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
+            <Box sx={{ width: '100%' }}>
+        <Stepper activeStep={activeStep} alternativeLabel>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <Box sx={{ padding: '16px' }}>
+          {activeStep === steps.length ? (
+            <div>
+              <h2>All steps completed</h2>
+              <Button onClick={() => setActiveStep(0)}>Reset</Button>
+            </div>
+          ) : (
+            <div>
+              {activeStep === 0 && (
+                <>
+                  <TextField
+                    label="Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    fullWidth
+                    margin="normal"
+                    required
+                  />
+                  <TextField
+                    label="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    fullWidth
+                    margin="normal"
+                    type="email"
+                    required
+                  />
+                  <TextField
+                    label="Phone"
+                    name="contactNo"
+                    value={formData.contactNo}
+                    onChange={handleChange}
+                    fullWidth
+                    margin="normal"
+                    required
+                  />
+                  <TextField
+                    label="Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    fullWidth
+                    margin="normal"
+                    type="password"
+                    required
+                  />
+                </>
+              )}
+              {activeStep === 1 && (
+                <>
+                <div className="form-group">
+                  <label htmlFor="role">Role*</label>
+                  <Select
+                    id="role"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    fullWidth
+                    margin="normal"
+                    required
+                  >
+                    <MenuItem value="Doctor">Doctor</MenuItem>
+                    <MenuItem value="Nurse">Nurse</MenuItem>
+                    <MenuItem value="Nutritionist">Nutritionist</MenuItem>
+                  </Select>
+                </div>
+                <TextField
+                    label="Experience"
+                    name="experience"
+                    value={formData.experience}
+                    onChange={handleChange}
+                    fullWidth
+                    margin="normal"
+                    inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                    required
+                  />
+                  <TextField
+                    label="Qualification"
+                    name="qualification"
+                    value={formData.qualification}
+                    onChange={handleChange}
+                    fullWidth
+                    margin="normal"
+                    required
+                  />
+                </>
+              )}
+              {activeStep === 2 && (
+                <>
+                  <TextField
+                    label="Address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    fullWidth
+                    margin="normal"
+                    multiline
+                    rows={4}
+                    required
+                  />
+                  {/* <div className="form-group">
+                    <label htmlFor="file">Upload CV*</label>
+                    <input
+                      type="file"
+                      id="file"
+                      name="cv"
+                      accept="application/pdf"
+                      onChange={handleChange}
+                      required
+                    />
+                  </div> */}
+                  {previewUrl && (
+                    <div className="file-preview">
+                      <iframe src={previewUrl} width="100%" height="500px" title="CV Preview"></iframe>
+                    </div>
+                  )}
+                </>
+              )}
+              <Box sx={{ marginTop: '16px' }}>
+                <Button
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  sx={{ marginRight: '8px' }}
+                >
+                  Back
+                </Button>
+                {activeStep === steps.length - 1 ? (
+                  <Button onClick={handleSubmit}>Submit</Button>
+                ) : (
+                  <Button onClick={handleNext}>Next</Button>
+                )}
+              </Box>
+            </div>
+          )}
+        </Box>
+      </Box>
+
+              {/* <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -83,6 +358,7 @@ export default function SignUpSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                type='email'
                 sx={{ fontSize: 11 }}
               />
               <TextField
@@ -106,20 +382,20 @@ export default function SignUpSide() {
                 id="confirmPassword"
                 autoComplete="new-password"
                 sx={{ fontSize: 11 }}
-              />
-              <FormControlLabel
+              /> */}
+              {/* <FormControlLabel
                 control={<Checkbox value="terms" color="primary" sx={{ fontSize: 11 }} />}
                 label="I agree to the terms and conditions"
                 sx={{ fontSize: 11 }}
-              />
-              <Button
+              /> */}
+              {/* <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 2, mb: 1, fontSize: 11 }}
               >
                 Sign Up
-              </Button>
+              </Button> */}
               <Grid container>
                 <Grid item xs>
                   <Link href="signin" variant="body2" sx={{ fontSize: 9 }}>
