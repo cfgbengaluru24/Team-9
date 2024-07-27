@@ -5,7 +5,6 @@ nav {
 ul {
   list-style-type: none;
   margin: 0;
-  padding: 20px;
   display: flex;
   justify-content: right;
 }
@@ -22,4 +21,8 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.logo {
+  margin-right: 20px;
 }
