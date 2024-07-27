@@ -8,5 +8,4 @@ userRouter.post('/signin',UserController.login);
 userRouter.post('/logout',UserController.logout);
 userRouter.post('/getReport/:id',reportController.getReports);
 
-
 export default userRouter;

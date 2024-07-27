@@ -39,12 +39,30 @@ class UserController{
             if (!bcrypt.compareSync(password,user.password)) {
                 return res.status(401).json({ message: "Invalid email or password" });
             } else {
+                user.updateOne({points: user.points+5});
                 res.json({ message: "Logged in successfully", user });
             }     
         } catch (error) {
             res.status(400).json({ error: error.message });
         }
     }
+
+    logout = async (req, res) => {
+        try{
+            const {email} = req.body;
+            const user = await User.findOne({
+                email
+            });
+            if (!user) {
+                return res.status(401).json({ message: "User not found" });
+            } else {
+                res.json({ message: "Logged out successfully" });
+            }
+        } catch (error) {
+            res.status(400).json({ error: error.message });
+        }
+    }
+
 }
 
 export default new UserController();
