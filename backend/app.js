@@ -1,24 +1,29 @@
-const express=require('express');
-const cors=require('cors');
-const mongoose=require('mongoose');
-const {mainRouter}=require('./routes/index');
-require('dotenv').config();
+import mongoose from "mongoose";
+import cors from 'cors';
+import express from 'express';
+import {config} from "dotenv";
+import mainRouter from "./routes/main.routes.js";
 
-const app=express()
-//Connect to the database
-const db=mongoose.connect(`${process.env.MONGO_URL}`).then(()=>{console.log("successfully connected to mongo db")}).catch((err)=>{console.log(err)})
+config();
 
-//All middleware instenaited
-app.use(express.urlencoded({extended:true}))
-app.use(cors())
-app.use(express.json())
 
-app.use('/api/v1',mainRouter)
+
+const app=express();
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/v1',mainRouter);
 app.use('*',(req,res)=>{
-    res.status(400).json({"message":"Not Found"})
+    res.status(400).json({"message":"Not Found"});
 })
 
-const PORT=process.env.PORT||3000;
-app.listen(PORT,(req,res)=>{
-    console.log(`Port started in port ${PORT}`)
+const PORT=process.env.PORT||3000
+
+app.listen(PORT,async()=>{
+    try{
+      const db=await mongoose.connect(`${process.env.MONGO_URL}`);
+    }catch(e){
+        console.log(e);
+    }
+    console.log("Server working");
 })

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Mentor from './Volunteer.js';
 
 const UserSchema=new mongoose.Schema({
     name:{
@@ -23,7 +22,7 @@ const UserSchema=new mongoose.Schema({
         required:true
     },
     dob:{
-        type:Date,
+        type:String,
         required:true
     },
     location:{
@@ -34,11 +33,14 @@ const UserSchema=new mongoose.Schema({
         required:true
     },
     mentor:{
-        type: Mentor,
-        ref: "Mentor"
+        type:String
+    },
+    points:{
+        type:Number,
+        default:0
     }
 })
 
 const User=mongoose.model("User",UserSchema)
 
-module.exports=User;
+export default User;

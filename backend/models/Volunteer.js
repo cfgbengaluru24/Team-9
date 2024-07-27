@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import User from "./User.js";
 
-const UserSchema=new mongoose.Schema({
+const VolunteerSchema=new mongoose.Schema({
     name :{
         type:String,
         required:true
@@ -11,7 +10,7 @@ const UserSchema=new mongoose.Schema({
         required:true,
         unique:true
     },
-    contanctNo :{
+    contactNo :{
         type:String,
         required:true
     },
@@ -31,12 +30,12 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    mentee:{
-        type: [User],
-        ref: "User" 
+    points:{
+        type:Number,
+        default:0
     }
 })
 
-const User=mongoose.model("User",UserSchema)
+const Volunteer=mongoose.model("Volunteer",VolunteerSchema)
 
-module.exports=User;
+export default Volunteer;

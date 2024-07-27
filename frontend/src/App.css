@@ -6,13 +6,19 @@ ul {
   list-style-type: none;
   margin: 0;
   display: flex;
-  justify-content: right;
+
 }
 
 li {
   margin: 0 1rem;
 }
 
+li .left{
+  margin-left: 150px;
+}
+li .right{
+  justify-content: right;
+}
 a {
   color: #61dafb;
   text-decoration: none;
