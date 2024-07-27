@@ -12,6 +12,10 @@ const donationSchema=mongoose.Schema({
         type:String,
         required:true,
         unique:true
+    },
+    "amount":{
+        type:Number,
+        required:true
     }
 })
 
