@@ -23,6 +23,7 @@ class UserController{
                     schoolName
                 }
             );
+            
             await user.save();
             res.status(201).json(user);
         } catch (error) {
