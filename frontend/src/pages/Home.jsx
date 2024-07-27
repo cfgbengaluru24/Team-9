@@ -37,21 +37,22 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className="content-page">
       <Nav />
       <div>
-        <h1 className='flex font-semibold text-center '>ROHINI : Right to Oral Health IN India</h1>
+        <h1 className='heading1'>Let's Start Your Journey with Rohini</h1>
       </div> 
-      <div className='flex'>
+      <div className='flex content2'>
         <button className="image-button" onClick={() => handleImageClick(volunteer)}>
-          <legend class='font-serif text-6xl'>Volunteer</legend>
+          <legend class='legend'>Volunteer</legend>
           <img src={volunteer} alt="Volunteer" />
         </button>
         <button className="image-button" onClick={() => handleImageClick(children)}>
-          <legend className='font-serif text-6xl '>Children</legend>
+          <legend className='legend'>Children</legend>
           <img src={children} alt="Children" />
         </button>
       </div>
+      <h1 className='heading2'>Our Top Performing Volunteers</h1>
       <div className="flex flex-wrap py-8">
         <div className="card-container flex grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cards.map((card, index) => (
@@ -66,7 +67,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

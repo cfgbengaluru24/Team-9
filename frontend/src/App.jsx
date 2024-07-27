@@ -35,6 +35,7 @@ function Main() {
         <Route path="/users" element={<User />} />
         <Route path="/volunteers" element={<Volunteer />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/dental" element={<DentalPrediction />} />
         <Route path="/signin" element={<SignInSide logged={logged} setLogged={setLogged}/>} />
         <Route path="/signup" element={<SignUpSide logged={logged} setLogged={setLogged}/>} />
         <Route path="/volunteer-programs" element={<VolunteerPrograms logged={logged} setLogged={setLogged}/>} />
