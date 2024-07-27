@@ -4,11 +4,16 @@ const donationSchema=mongoose.Schema({
     "name":{
         type:String,
     },
+    "email":{
+        type:String,
+        required:true,
+        default:"test@gmail.com"
+    },
     "pan_no":{
         type:String,
         required:true
     },
-    "transation_id":{
+    "transaction_id":{
         type:String,
         required:true,
         unique:true
