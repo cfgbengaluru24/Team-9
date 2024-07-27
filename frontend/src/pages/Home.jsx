@@ -29,7 +29,11 @@ const Home = () => {
 
   const handleImageClick = (image) => {
     console.log(`Image clicked: ${image}`);
-    // Add your logic here, e.g., navigate to a different page or open a modal
+    if (image === volunteer) {
+      window.location.href = '/volunteers';
+    } else if (image === children) {
+      window.location.href = '/users';
+    }
   };
 
   return (
