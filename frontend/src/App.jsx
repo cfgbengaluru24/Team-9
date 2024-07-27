@@ -38,7 +38,7 @@ function Main() {
   return (
     <>
       
-      <nav style={{ position: 'sticky', top: '0', zIndex: '100' }}>
+      {/* <nav style={{ position: 'sticky', top: '0', zIndex: '100' }}>
         <div className="logo">
           <img src={logo} alt="Logo" />
         </div>
@@ -51,7 +51,7 @@ function Main() {
           <li><Link to="/volunteer-programs">Upcoming Programs</Link></li>
           <li><Link to="/signin">Login</Link></li>
         </ul>)}
-      </nav>
+      </nav> */}
     
       <Routes>
         <Route path="/" element={<Home />} />
