@@ -1,4 +1,5 @@
-const mongoose=require('mongoose')
+import mongoose from 'mongoose';
+import Mentor from './Volunteer.js';
 
 const UserSchema=new mongoose.Schema({
     name:{
@@ -13,7 +14,7 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    phNo:{
+    contactNo:{
         type:String,
         required:true,
     },
@@ -33,7 +34,8 @@ const UserSchema=new mongoose.Schema({
         required:true
     },
     mentor:{
-        type:String,
+        type: Mentor,
+        ref: "Mentor"
     }
 })
 
