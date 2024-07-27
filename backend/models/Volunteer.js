@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import User from "./User.js";
 
-const UserSchema=new mongoose.Schema({
+const VolunteerSchema=new mongoose.Schema({
     name :{
         type:String,
         required:true
@@ -30,13 +30,9 @@ const UserSchema=new mongoose.Schema({
     experience:{
         type:String,
         required:true
-    },
-    mentee:{
-        type: [User],
-        ref: "User" 
     }
 })
 
-const User=mongoose.model("User",UserSchema)
+const Volunteer=mongoose.model("Volunteer",VolunteerSchema)
 
-module.exports=User;
+export default Volunteer;
