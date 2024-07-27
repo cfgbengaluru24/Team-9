@@ -1,12 +1,16 @@
 import User from '../models/User.js';
-
+import * as bcrypt from 'bcrypt';
 class UserController{
     signup = async (req,res) => {
         try {
             if(!req.body){
                 return res.status(400).json({message:"Data to update can not be empty"})
             }
-            const { name, email, contactNo, password, parentName, dob, location, schoolName} = req.body;
+            let { name, email, contactNo, password, parentName, dob, location, schoolName} = req.body;
+            const saltRounds=10;
+            const salt=await bcrypt.genSalt(saltRounds);
+            const hashedPassword=bcrypt.hashSync(password,salt);
+            password=hashedPassword
             const user = new User(
                 {
                     name,
@@ -30,7 +34,9 @@ class UserController{
         try{
             const {email, password } = req.body;
             const user = await User.findOne({ email });
-            if (user.password != password) {
+            const saltRounds=10;
+            const salt=bcrypt.genSalt(saltRounds);
+            if (!bcrypt.compareSync(password,user.password)) {
                 return res.status(401).json({ message: "Invalid email or password" });
             } else {
                 res.json({ message: "Logged in successfully", user });

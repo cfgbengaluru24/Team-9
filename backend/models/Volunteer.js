@@ -11,7 +11,7 @@ const VolunteerSchema=new mongoose.Schema({
         required:true,
         unique:true
     },
-    contanctNo :{
+    contactNo :{
         type:String,
         required:true
     },
