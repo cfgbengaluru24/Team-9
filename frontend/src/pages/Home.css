@@ -1,0 +1,119 @@
+.header{
+    height: 100vh;
+    margin: 30px auto;
+    background: url('./../assets/home.jpg') no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.header-contents{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 50%;
+    bottom: 10%;
+    left: 6vw;
+
+}
+.header-contents h2{
+    font-weight: 500;
+    color: white;
+    font-size: max(4.5vw,22px);
+}
+
+.header-contents p{
+    color: white;
+    font-size: 1vw;
+}
+.header-contents button{
+    border: none;
+    color: #747474;
+    font-weight: 500;
+    padding: 1vw 2.3vw;
+    background-color: white;
+    font-size: max(1vw,13px);
+    border-radius: 50px;
+}
+
+.header-contents button:hover{
+    background-color: blue;
+}
+
+.c {
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.container-ab {
+    background: rgba(255, 255, 255, 0.9); /* Slightly less transparent for better visibility */
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem; /* Reduce gap for tighter layout */
+    align-items: center;
+    justify-content: space-between; /* Distribute items evenly */
+    padding: 1.5rem; /* Adjust padding for overall spacing */
+    width: 80%;
+    max-width: 1200px; /* Max-width to prevent the container from becoming too large */
+    border-radius: 13px;
+    box-sizing: border-box; /* Ensure padding and border are included in the total width and height */
+    height: 90vh; /* Adjust height to fit within 100vh */
+    overflow-y: auto; /* Add scroll if content exceeds the container's height */
+    margin-top: 5vh; /* Center the container with some space from the top */
+}
+
+/* Ensure image adjusts to container size */
+.container-ab .image {
+    flex: 1 1 40%; /* Ensure the image takes up 40% of the width */
+    overflow: hidden; /* Hide any overflow */
+}
+
+.container-ab .image img {
+    width: 100%; /* Ensure image takes full width of its container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.container-ab .info {
+    flex: 1 1 40%; /* Ensure the info takes up 40% of the width */
+    padding: 1.5rem; /* Adjust padding for better fit */
+}
+
+.container-ab .info h2 {
+    font-size: 2rem; /* Reduced font size for better fit */
+    color: navy;
+    text-decoration: underline;
+}
+
+.container-ab .info p {
+    font-size: 0.9rem; /* Reduced font size for better fit */
+    padding: 0.8rem 0; /* Adjust padding for readability */
+    line-height: 1.4; /* Slightly reduced line-height for compact text */
+    color: #333;
+    text-align: justify;
+}
+
+
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: #f5f5f5; /* Optional: background color for contrast */
+    padding: 16px; /* Optional: padding around the grid */
+  }
+  
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px; /* Space between cards */
+    padding: 16px;
+    max-width: 1200px; /* Adjust based on your layout needs */
+    margin: 0 auto;
+  }
