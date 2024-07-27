@@ -2,143 +2,54 @@
     padding:0;
     margin:0;
 }
-
-.header{
-    height: 100vh;
-    background-size: cover;
-    position: relative;
-    background-color: white;
-}
-
-.header-contents{
-    position: absolute;
-    display: flex;
-    background-color:#ffffff;
-    height:800px;
-    width: 100%;
-}
-
-.head1{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 1.5vw;
-  color: white;
-}
-
-.head2{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 2.5vw;
-  font-weight: 300;
-  color: rgb(0, 154, 185);
-}
-
-.ig1{
-    width: 700px;
-    height: 350px;
-    margin-left:250px;
-}
-.ig2{
-    width: 700px;
-    height: 350px;
-}
-
-
-.header-contents h2{
-    font-weight: 500;
-    color: white;
-    font-size: max(4.5vw,22px);
-}
-
-.header-contents p{
-    color: white;
-    font-size: 1vw;
-}
-.header-contents button{
-    border: none;
-    color: #747474;
-    font-weight: 500;
-    padding: 1vw 2.3vw;
-    background-color: white;
-    font-size: max(1vw,13px);
-    border-radius: 50px;
-}
-
-.header-contents button:hover{
-    background-color: blue;
-}
-
-.c {
-    height: 100vh; /* Full viewport height */
-    margin: 0;
+.flex {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    width: 100%;
-}
-
-.container-ab {
-    background: rgba(255, 255, 255, 0.9); /* Slightly less transparent for better visibility */
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 1rem; /* Reduce gap for tighter layout */
-    align-items: center;
-    justify-content: space-between; /* Distribute items evenly */
-    padding: 1.5rem; /* Adjust padding for overall spacing */
-    width: 80%;
-    max-width: 1200px; /* Max-width to prevent the container from becoming too large */
-    border-radius: 13px;
-    box-sizing: border-box; /* Ensure padding and border are included in the total width and height */
-    height: 90vh; /* Adjust height to fit within 100vh */
-    overflow-y: auto; /* Add scroll if content exceeds the container's height */
-    margin-top: 5vh; /* Center the container with some space from the top */
-}
-
-/* Ensure image adjusts to container size */
-.container-ab .image {
-    flex: 1 1 40%; /* Ensure the image takes up 40% of the width */
-    overflow: hidden; /* Hide any overflow */
-}
-
-.container-ab .image img {
-    width: 100%; /* Ensure image takes full width of its container */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.container-ab .info {
-    flex: 1 1 40%; /* Ensure the info takes up 40% of the width */
-    padding: 1.5rem; /* Adjust padding for better fit */
-}
-
-.container-ab .info h2 {
-    font-size: 2rem; /* Reduced font size for better fit */
-    color: navy;
-    text-decoration: underline;
-}
-
-.container-ab .info p {
-    font-size: 0.9rem; /* Reduced font size for better fit */
-    padding: 0.8rem 0; /* Adjust padding for readability */
-    line-height: 1.4; /* Slightly reduced line-height for compact text */
-    color: #333;
-    text-align: justify;
-}
-
-
-
-.center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Full viewport height */
-    background-color: #f5f5f5; /* Optional: background color for contrast */
-    padding: 16px; /* Optional: padding around the grid */
+    gap: 1rem; /* Add some space between images */
   }
   
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px; /* Space between cards */
-    padding: 16px;
-    max-width: 1200px; /* Adjust based on your layout needs */
-    margin: 0 auto;
+  .image-button {
+    margin:20px;
+    width: 600px; /* Adjust as needed */
+    height: 400px; /* Adjust as needed */
+    overflow: hidden;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.56);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+  
+  .image-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .image-button:hover {
+    transform: scale(1.05); /* Scale up on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add shadow on hover */
+  }
+  
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  
+.ig1{
+    width: 400px;
+    height: 350px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.833);
+}
+.ig2{
+    width: 400px;
+    height: 350px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.833);
+}
+

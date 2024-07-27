@@ -2,9 +2,9 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div>
-      <h1>About Page</h1>
-      <p>This is the About Page</p>
+    <div className="about-container">
+      <h1>Rohini Oral health Foundation</h1>
+      <p>This is the About Page for Rohini Oral Health Foundation</p>
     </div>
   );
 };

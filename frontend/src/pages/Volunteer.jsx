@@ -22,7 +22,6 @@ const Volunteer = () => {
     contactNo: '',
     address: '',
     role: 'Doctor',
-    // cv: null,
     experience: 0,
     qualification: '',
     password: '',

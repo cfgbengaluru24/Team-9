@@ -1,0 +1,102 @@
+/* *{
+    padding:0;
+    margin:0;
+}
+
+.image{
+    background: url('../assets/4894738') cover no-repeat;
+} */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Adjust ratio as needed */
+    gap: 1.5rem; /* Space between columns */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.donation-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column;
+}
+
+.heading {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: bold; /* font-bold */
+    margin-bottom: 1.5rem; /* mb-6 */
+    text-align: center; /* text-center */
+}
+
+.form {
+    background-color: white; /* bg-white */
+    padding: 2rem; /* p-8 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1); /* shadow-md */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    width: 100%;
+    max-width: 500px; /* Adjust max-width as needed */
+}
+
+.form-group {
+    margin-bottom: 1rem; /* mb-4 */
+    width: 100%; /* Ensure full width within form */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+}
+
+.label {
+    display: block;
+    color: #4a5568; /* text-gray-700 */
+    font-weight: bold; /* font-bold */
+    margin-bottom: 0.5rem; /* mb-2 */
+    text-align: center; /* Center labels */
+}
+
+.input {
+    width: 100%;
+    max-width: 400px; /* Adjust max-width as needed */
+    padding: 0.75rem; /* p-3 */
+    border: 1px solid #e2e8f0; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    outline: none;
+    box-shadow: inset 0 0 0.125rem rgba(0, 0, 0, 0.1); /* focus:ring-2 */
+}
+
+.input:focus {
+    border-color: #4f46e5; /* focus:ring-indigo-500 */
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5); /* focus:ring-2 */
+}
+
+.button {
+    width: auto; /* Width adjusts to content */
+    padding: 0.5rem 1rem; /* Adjust padding for smaller button */
+    font-size: 0.875rem; /* Font size for smaller button text */
+    background-color: #4f46e5; /* bg-indigo-600 */
+    color: white; /* text-white */
+    border-radius: 0.5rem; /* rounded-lg */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s; /* transition duration-300 */
+}
+
+.button:hover {
+    background-color: #4338ca; /* hover:bg-indigo-700 */
+}
