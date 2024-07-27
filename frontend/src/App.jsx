@@ -14,7 +14,7 @@ import DocSignInSide from './pages/DocSignInSide';
 import DocSignUpSide from './pages/DocSignUpSide';
 import VolunteerPrograms from './pages/VolunteerPrograms';
 import Report from './pages/Report';
-
+import DentalPrediction from './pages/DentalPrediction';
 
 function App() {
   return (

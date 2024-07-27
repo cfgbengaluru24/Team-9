@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './DentalPredition.css';
-import { Dropzone, ExtFile, FileMosaic } from '@dropzone-ui/react';
+import './DentalPrediction.css';
+import { Dropzone, FileMosaic } from '@dropzone-ui/react';
 
 
 function DentalPrediction() {
@@ -46,7 +46,8 @@ function DentalPrediction() {
 
       const result = await response.json();
       file=undefined
-      setResponseData(result.data);
+      console.log(result);
+      setResponseData(result.result);
      
     } catch (err) {
       setError(err.message);
@@ -63,7 +64,7 @@ function DentalPrediction() {
   return (
     <div id="root">
       <header>
-        <img src="https://static.vecteezy.com/system/resources/previews/015/152/952/original/url-icon-design-for-web-interfaces-and-applications-png.png" alt="Link Icon" className="header-logo" />
+        <img src="https://media.licdn.com/dms/image/C560BAQHmUC8ijS63wQ/company-logo_200_200/0/1630652343957/rohini_right_to_oral_health_society_logo?e=2147483647&v=beta&t=eaBvgjz4N-QLH7L7PynW-RToPekm_Vlrmvl7GpMlJaY" alt="Link Icon" className="header-logo" />
         <h1>Dental Pediction</h1>
         <p>Upload your files and get a Dental Prediction!</p>
       </header>
@@ -84,8 +85,8 @@ function DentalPrediction() {
         </form>
         {responseData && (
           <div className="response-container">
-            <p>Your TinyURL: <a href={responseData}>{responseData}</a></p>
-            <button className="upload-button" onClick={handleCopyUrl} >Copy URL</button>
+            <p>Your Predictions: <a href={responseData}>{responseData}</a></p>
+            
           </div>
         )}
       </div>
