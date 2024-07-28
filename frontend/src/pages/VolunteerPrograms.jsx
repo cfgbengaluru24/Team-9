@@ -4,131 +4,40 @@ import Nav from '../components/Navbar/Nav';
 import { useState } from 'react';
 import { getFormControlLabelUtilityClasses } from '@mui/material';
 
-// const camps = [
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   {
-//     name: 'Summer Camp 2024',
-//     description: 'A fun summer camp for kids aged 8-12.',
-//     volunteersNeeded: 10,
-//     location: 'Central Park, NYC',
-//   },
-//   {
-//     name: 'Winter Camp 2024',
-//     description: 'An exciting winter camp with snow activities.',
-//     volunteersNeeded: 8,
-//     location: 'Aspen, CO',
-//   },
-//   // Add more camp objects as needed
-// ];
+const camps = [
+  {
+    name: 'Summer Camp 2024',
+    description: 'A fun summer camp for kids aged 8-12.',
+    volunteersNeeded: 10,
+    location: 'Central Park, NYC',
+    url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.0663856669767!2d-73.9681583241534!3d40.78255467138306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2589a018531e3%3A0xb9df1f7387a94119!2sCentral%20Park!5e0!3m2!1sen!2sin!4v1722127666413!5m2!1sen!2sin"
+  },
+  {
+    name: 'Winter Camp 2024',
+    description: 'An exciting winter camp with snow activities.',
+    volunteersNeeded: 8,
+    location: 'Aspen, CO',
+    url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49471.27792620949!2d-106.87792424666665!3d39.198474194999235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8740397cf7413c7d%3A0xc12b42dc782cf672!2sAspen%2C%20CO%2081611%2C%20USA!5e0!3m2!1sen!2sin!4v1722127739691!5m2!1sen!2sin"
+
+  },
+  {
+    name: 'Summer Camp 2024',
+    description: 'A fun summer camp for kids aged 11-19.',
+    volunteersNeeded: 10,
+    location: 'Central Park, NYC',
+    url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.0663856669767!2d-73.9681583241534!3d40.78255467138306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2589a018531e3%3A0xb9df1f7387a94119!2sCentral%20Park!5e0!3m2!1sen!2sin!4v1722127666413!5m2!1sen!2sin"
+  },
+
+  
+  // {
+  //   name: 'Winter Camp 2024',
+  //   description: 'An exciting winter camp with snow activities.',
+  //   volunteersNeeded: 8,
+  //   location: 'Aspen, CO',
+  // }
+];
 const VolunteerPrograms = () => {
-    const [camps, setCamps] = useState([]);
+    const [Camps, setCamps] = useState([]);
     const [iframeVisible, setIframeVisible] = useState([]);
   
     const handleRegister = (campName) => {
@@ -190,7 +99,7 @@ const VolunteerPrograms = () => {
     return (
       <>
         <Nav />
-        <header className="header">
+        <header className="header1">
           <h1 className="headline">Join the Adventure: Volunteer for Our Exciting Upcoming Camps!</h1>
         </header>
         <div className="camps-container">
@@ -219,7 +128,7 @@ const VolunteerPrograms = () => {
                   </button>
                   {iframeVisible[index] && (
                     <iframe
-                      src={`${gmapsSrc}?q=${encodeURIComponent(camp.location)}`} // Example usage of gmapsSrc
+                      src={`${camp.url}`} // Example usage of gmapsSrc
                       width="100%"
                       height="200"  // Adjust height as needed
                       style={{ border: '0', marginTop: '10px' }}

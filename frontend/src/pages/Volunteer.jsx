@@ -107,12 +107,6 @@ const Volunteer = () => {
           <iframe src={previewUrl} width="100%" height="500px" title="CV Preview"></iframe>
         </div>
       )} */}
-      <div className="header">
-        <div className="header-contents">
-          <h2>VOLUNTEERS</h2>
-          <a href='#volunteer-form' style={{ backgroundColor: 'white', padding: '5px', borderRadius: '3%' }}>Volunteer Now</a>
-        </div>
-      </div>
       <h1>Join Us as a Partner in Our Social Cause</h1>
       <div className="volunteer-container">
         <div className="volunteer-image">

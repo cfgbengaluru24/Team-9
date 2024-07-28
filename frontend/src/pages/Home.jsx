@@ -32,7 +32,7 @@ const Home = () => {
     if (image === volunteer) {
       window.location.href = '/volunteers';
     } else if (image === children) {
-      window.location.href = '/users';
+      window.location.href = '/user-signup';
     }
   };
 

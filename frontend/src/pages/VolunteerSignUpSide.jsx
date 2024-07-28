@@ -182,11 +182,10 @@ export default function VolunteerSignUpSide() {
           md={7}
           sx={{
             backgroundImage:
-              'url("/static/images/templates/templates-images/sign-in-side-bg.png")',
+              'url("https://tms.ashoktailors.com/public/backend/img/admin-login.jpg")',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'left',
+            backgroundSize: 'cover'
           }}
         />
         <Grid item xs={9} sm={7} md={4} component={Paper} elevation={6} square>

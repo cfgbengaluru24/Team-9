@@ -39,6 +39,28 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
+                to="/dental"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Dental
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/anemia"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+               Anemia 
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
                 to="/about"
                 activeClassName="active"
                 className="nav-links"
@@ -50,7 +72,7 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/donations"
+                to="/donation"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
@@ -76,10 +98,7 @@ function NavBar() {
         Login
       </div>
       {dropdownOpen && (
-        <div style={{'color': "white", 'position': 'absolute', 'backgroundColor': 'black'}}>
-          <div onClick={() => {setDropdownOpen(false);navigate('/doc-signin')}}>
-            Doctor
-          </div>
+        <div style={{'color': "white", 'position': 'absolute', 'backgroundColor': 'black','width':"50px"}}>
           <div onClick={() => {setDropdownOpen(false);navigate('/user-signin')}}>
             User
           </div>

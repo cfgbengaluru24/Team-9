@@ -77,7 +77,7 @@ export default function UserSignInSide({ logged, setLogged }) {
           md={7}
           sx={{
             backgroundImage:
-              'url("/static/images/templates/templates-images/sign-in-side-bg.png")',
+              'url("https://tms.ashoktailors.com/public/backend/img/admin-login.jpg")',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',

@@ -15,6 +15,9 @@ import DocSignUpSide from './pages/DocSignUpSide';
 import VolunteerPrograms from './pages/VolunteerPrograms';
 import Report from './pages/Report';
 import DentalPrediction from './pages/DentalPrediction';
+import Donation from './pages/Donations';
+import Contact from './pages/Contact';
+import Anemia from './pages/AnemiaPrediction';
 
 function App() {
   return (
@@ -65,6 +68,9 @@ function Main() {
         <Route path="/projects" element={<NotFound />} />
         <Route path="/testimonials" element={<NotFound />} />
         <Route path="/volunteers" element={<Volunteer />} />
+        <Route path="/contact" element={<Contact/>} />
+        <Route path='/donation' element={<Donation/>}/>
+        <Route path='/anemia' element={<Anemia/>}/>
         <Route path="/vol-signin" element={<VolunteerSignInSide logged={logged} setLogged={setLogged}/>} />
         <Route path="/vol-signup" element={<VolunteerSignUpSide logged={logged} setLogged={setLogged}/>} />
         <Route path="/user-signin" element={<UserSignInSide logged={logged} setLogged={setLogged}/>} />
